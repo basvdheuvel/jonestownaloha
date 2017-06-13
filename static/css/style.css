@@ -24,6 +24,7 @@ a:hover, a:focus {
 #grid {
     display: grid;
     height: 100%;
+    justify-content: center;
 }
 
 #content #hype {
@@ -52,7 +53,7 @@ a:hover, a:focus {
 @media(orientation: landscape) {
 
     #grid {
-        grid-template-columns: 478px auto;
+        grid-template-columns: 443px auto;
         grid-template-rows: auto;
     }
 
@@ -63,7 +64,6 @@ a:hover, a:focus {
     }
     #banner img {
         position: fixed;
-        left: 25px;
         top: 0;
     }
 
@@ -72,7 +72,7 @@ a:hover, a:focus {
         grid-row: 1;
         max-width: 650px;
         padding-top: 50px;
-        padding-left: 25px;
+        padding-left: 36px;
         padding-right: 50px;
     }
 }
