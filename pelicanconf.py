@@ -3,6 +3,10 @@
 from __future__ import unicode_literals
 
 THEME = '.'
+FILENAME_METADATA = '(?P<date>\d{4}-\d{2}-\d{2})_(?P<venue>.*)'
+DIRECT_TEMPLATES = ['index']
+SLUGIFY_SOURCE = 'basename'
+ARTICLE_SAVE_AS = 'shows/{slug}.html'
 
 AUTHOR = 'Bas'
 SITENAME = 'Jonestown Aloha'

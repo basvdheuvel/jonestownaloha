@@ -3,6 +3,7 @@
 
     <head>
         <link href='theme/css/style.css' rel='stylesheet' type='text/css'>
+        <script src='theme/js/NodeList.min.js' type='text/javascript'></script>
     </head>
 
     <body>
@@ -15,23 +16,24 @@
 
                 <h1>Upcuming shows</h1>
                 <ul id='shows'>
-                    <li>17-06-'17 Spinhuis w/ Deze en Die Band
-                        <a href='#'>Linkje</a> <a href='#'>FB</a>
-                        <a href='#'>Flyer</a>
-                    <li>xx-xx-'xx xxxxxxx w/ xxxxxxxxxxx <a href='#'>Linkje</a>
-                        <a href='#'>FB</a> <a href='#'>Flyer</a>
-                    <li>xx-xx-'xx xxxxxxx w/ xxxxxxxxxxx <a href='#'>Linkje</a>
-                        <a href='#'>FB</a> <a href='#'>Flyer</a>
-                    <li>xx-xx-'xx xxxxxxx w/ xxxxxxxxxxx <a href='#'>Linkje</a>
-                        <a href='#'>FB</a> <a href='#'>Flyer</a>
-                    <li>xx-xx-'xx xxxxxxx w/ xxxxxxxxxxx <a href='#'>Linkje</a>
-                        <a href='#'>FB</a> <a href='#'>Flyer</a>
-                    <li>xx-xx-'xx xxxxxxx w/ xxxxxxxxxxx <a href='#'>Linkje</a>
-                        <a href='#'>FB</a> <a href='#'>Flyer</a>
+                    {% for show in articles|sort(attribute='date') %}
+                        <li data-date='{{ show.date }}'>
+                            {{ show.date|strftime('%d-%m-\'%y') }}
+                            {% if show.time %}{{ show.time }}{% endif %}
+                            {% if show.title %}{{ show.title }}{% endif %}
+                            @ {{ show.venue }}, {{ show.city }}
+                            {% if show.link %}<a target='_blank'
+                                href='{{ show.link }}'>Link</a>{% endif %}
+                            {% if show.facebook %}<a target='_blank'
+                                href='{{ show.facebook }}'>FB</a>{% endif %}
+                            {% if show.flyer %}<a target='_blank'
+                                href='{{ show.flyer }}'>Flyer</a>{% endif %}
+                        </li>
+                    {% endfor %}
                 </ul>
 
-                <p id='hype'>*** We are recording a shiny E.P. <em>right
-                    now</em>! ***
+                <p id='hype'>*** We have been recording, and pretty soon you
+                can expect a <em>shiny E.P.</em>! ***
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Donec at lacinia lacus, in vestibulum magna. Pellentesque
@@ -91,6 +93,8 @@
                 pretium arcu.
             </div>
         </div>
+
+        <script src='theme/js/js.js' type='text/javascript'></script>
     </body>
 
 </html>

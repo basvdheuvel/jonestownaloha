@@ -39,6 +39,9 @@ a:hover, a:focus {
     text-align: left;
     margin-top: 10px;
 }
+#content #shows a:nth-of-type(n+2) {
+    margin-left: 5px;
+}
 
 #content p {
     margin-top: 15px;
