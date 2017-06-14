@@ -15,7 +15,7 @@
             <div id='content' class='box'>
 
                 <h1>Upcuming shows</h1>
-                <ul id='shows'>
+                <ul class='shows' id='shows'>
                     {% for show in articles|sort(attribute='date') %}
                         <li data-date='{{ show.date }}'>
                             {{ show.date|strftime('%d-%m-\'%y') }}
@@ -30,6 +30,11 @@
                                 href='{{ show.flyer }}'>Flyer</a>{% endif %}
                         </li>
                     {% endfor %}
+                </ul>
+
+                <a id='openen' href='#'>Open!</a>
+
+                <ul class='shows' id='past-shows'>
                 </ul>
 
                 <p id='hype'>*** We have been recording, and pretty soon you

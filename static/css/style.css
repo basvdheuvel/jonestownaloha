@@ -33,14 +33,21 @@ a:hover, a:focus {
     animation: blinker 500ms step-start infinite;
 }
 
-#content #shows {
+#content .shows {
     margin-bottom: 20px;
     list-style-position: inside;
     text-align: left;
     margin-top: 10px;
 }
-#content #shows a:nth-of-type(n+2) {
+#content .shows a:nth-of-type(n+2) {
     margin-left: 5px;
+}
+
+#past-shows {
+    display: none;
+}
+#past-shows.open {
+    display: unset;
 }
 
 #content p {
