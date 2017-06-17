@@ -19,16 +19,48 @@
         last_show = show;
     }
 
-
-    $$('a#openen').addEventListener('click', function () {
-        let clss = past_shows_ul.className.split(' ');
-        let open_cls_idx = clss.indexOf('open');
-        if (open_cls_idx === -1) {
-            clss.push('open');
+    $$('a#open-past-shows').addEventListener('click', function () {
+        if (toggle_class(past_shows_ul, 'open')) {
+            this.text = 'Hide past shows';
         }
         else {
-            clss.splice(open_cls_idx, 1);
+            this.text = 'Show past shows';
         }
-        past_shows_ul.className = clss.join(' ');
     });
+
+    let past_releases_div = $$('div#past-releases')[0];
+    $$('a#open-past-releases').addEventListener('click', function () {
+        if (toggle_class(past_releases_div, 'open')) {
+            this.text = 'Hide past releases';
+
+            // Activate the iframes.
+            let iframes = $$('iframe.player', past_releases_div);
+            for (let iframe of iframes) {
+                if (iframe.src === '') {
+                    iframe.src = iframe.dataset.src;
+                }
+            }
+        }
+        else {
+            this.text = 'Show past releases';
+        }
+    });
+
+    // Toggle class.
+    // Returns true if added, false if removed.
+    function toggle_class(el, cls) {
+        let clss = el.className.split(' ');
+        let cls_idx = clss.indexOf(cls);
+        let cls_add = cls_idx === -1;
+
+        if (cls_add) {
+            clss.push(cls);
+        }
+        else {
+            clss.splice(cls_idx, 1);
+        }
+        el.className = clss.join(' ');
+
+        return cls_add;
+    }
 })();
